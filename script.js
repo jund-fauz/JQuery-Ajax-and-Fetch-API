@@ -1,6 +1,15 @@
-const table = document.getElementById('table'), month = document.getElementById('month'), city_select = document.getElementById('city')
+const table = document.getElementById('table'), month = document.getElementById('month'), city_select = document.getElementById('city'), toast = document.getElementById('toast'), internetStatus = document.getElementById('internetStatus')
 const date = new Date()
 month.selectedIndex = date.getMonth()
+const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toast)
+
+// Deteksi Internet
+if (!window.navigator.onLine) showOfflineMessage() 
+window.addEventListener('offline', showOfflineMessage)
+window.addEventListener('online', () => {
+    toastBootstrap.hide()
+    showData()
+})
 
 // AJAX dengan Fetch API
 fetch('https://www.emsifa.com/api-wilayah-indonesia/api/regencies/33.json')
@@ -51,4 +60,9 @@ function success(result) {
 
 function error() {
 
+}
+
+function showOfflineMessage() {
+    internetStatus.innerHTML = 'offline'
+    toastBootstrap.show()
 }
