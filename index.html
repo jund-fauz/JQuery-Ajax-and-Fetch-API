@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jadwal Waktu Sholat di Jawa Tengah</title>
     <style>
+        :root {
+            --table-padding: 2vw;
+        }
+        
         body {
             display: flex;
             justify-content: center;
@@ -30,9 +34,21 @@
         tr,
         td,
         th {
-            padding: 12px;
+            padding: 12px var(--table-padding);
             border: 1px solid black;
             text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            :root {
+                --table-padding: 1vw;
+            }
+        }
+
+        @media (min-width: 900px) {
+            :root {
+                --table-padding: 3vw;
+            }
         }
     </style>
 </head>

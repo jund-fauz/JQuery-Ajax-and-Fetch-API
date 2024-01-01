@@ -19,7 +19,6 @@ function showData() {
         table.deleteRow(1);
     }
     // AJAX dengan JQuery
-    console.log(`http://api.aladhan.com/v1/calendarByCity/${date.getFullYear()}/${month.value}?city=${city_select.value}&country=Indonesia&method=2`)
     if (city_select.value != 'Pilih kota')
         $.ajax({
             url: `http://api.aladhan.com/v1/calendarByCity/${date.getFullYear()}/${month.value}?city=${city_select.value}&country=Indonesia&method=2`,
